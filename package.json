@@ -1,9 +1,9 @@
 {
-  "name": "starter-plugin",
+  "name": "woocommerce-customer-support",
   "version": "1.0.0",
-  "slug": "starter-plugin",
-  "description": "A WordPress starter plugin boilerplate",
-  "author": "Your Name",
+  "slug": "wc-customer-support",
+  "description": "A fully customer support system for WooCommerce",
+  "author": "Sabbir Ahmed",
   "license": "GPL",
   "private": true,
   "devDependencies": {
