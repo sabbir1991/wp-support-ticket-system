@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: WooCommerce Customer Support
+Plugin Name: WP Support Manager
 Plugin URI: http://sabbir.pro/
-Description: A fully customer support system for WooCommerce
+Description: A fully ticket based customer support system for WordPress
 Version: 1.0.0
-Author: Sabbir Ahmed, Rafsun
+Author: Sabbir Ahmed
 Author URI: http://sabbir.pro/
 License: GPL2
 */
@@ -39,11 +39,11 @@ License: GPL2
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * WC_Customer_Support class
+ * WP_Support_Manager class
  *
- * @class WC_Customer_Support The class that holds the entire WC_Customer_Support plugin
+ * @class WP_Support_Manager The class that holds the entire WP_Support_Manager plugin
  */
-class WC_Customer_Support {
+class WP_Support_Manager {
 
      /**
      * Plugin version
@@ -53,7 +53,7 @@ class WC_Customer_Support {
     public $version = '1.0.0';
 
     /**
-     * Constructor for the WC_Customer_Support class
+     * Constructor for the WP_Support_Manager class
      *
      * Sets up all the appropriate hooks and actions
      * within our plugin.
@@ -78,20 +78,20 @@ class WC_Customer_Support {
         // initialize classes
         $this->init_classes();
 
-        do_action( 'wc_customer_support_loaded', $this );
+        do_action( 'wp_support_manager_loaded', $this );
     }
 
     /**
-     * Initializes the WC_Customer_Support() class
+     * Initializes the WP_Support_Manager() class
      *
-     * Checks for an existing WC_Customer_Support() instance
+     * Checks for an existing WP_Support_Manager() instance
      * and if it doesn't find one, creates it.
      */
     public static function init() {
         static $instance = false;
 
         if ( ! $instance ) {
-            $instance = new WC_Customer_Support();
+            $instance = new WP_Support_Manager();
         }
 
         return $instance;
@@ -121,10 +121,10 @@ class WC_Customer_Support {
      * @return void
      */
     private function define_constant() {
-        define( 'WC_CUSTOMER_SUPPORT_VERSION', $this->version );
-        define( 'WC_CUSTOMER_SUPPORT_FILE', __FILE__ );
-        define( 'WC_CUSTOMER_SUPPORT_PATH', dirname( WC_CUSTOMER_SUPPORT_FILE ) );
-        define( 'WC_CUSTOMER_SUPPORT_ASSETS', plugins_url( '/assets', __FILE__ ) );
+        define( 'WP_SUPPORT_MANAGER_VERSION', $this->version );
+        define( 'WP_SUPPORT_MANAGER_FILE', __FILE__ );
+        define( 'WP_SUPPORT_MANAGER_PATH', dirname( WP_SUPPORT_MANAGER_FILE ) );
+        define( 'WP_SUPPORT_MANAGER_ASSETS', plugins_url( '/assets', __FILE__ ) );
     }
 
     /**
@@ -184,7 +184,7 @@ class WC_Customer_Support {
      * @uses load_plugin_textdomain()
      */
     public function localization_setup() {
-        load_plugin_textdomain( 'wc-customer-support', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'wp-support-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     /**
@@ -198,8 +198,8 @@ class WC_Customer_Support {
      */
     public function enqueue_scripts() {
 
-        wp_enqueue_style( 'wc-customer-support-styles', WC_Customer_Support_ASSETS . '/css/style.css', false, date( 'Ymd' ) );
-        wp_enqueue_script( 'wc-customer-support-scripts', WC_Customer_Support_ASSETS . '/js/script.js', array( 'jquery' ), false, true );
+        wp_enqueue_style( 'wp-support-manager-styles', WP_SUPPORT_MANAGER_ASSETS . '/css/style.css', false, date( 'Ymd' ) );
+        wp_enqueue_script( 'wp-support-manager-scripts', WP_SUPPORT_MANAGER_ASSETS . '/js/script.js', array( 'jquery' ), false, true );
 
         /**
          * Example for setting up text strings from Javascript files for localization
@@ -221,9 +221,9 @@ class WC_Customer_Support {
         // Load your admin scripts..
     }
 
-} // WC_Customer_Support
+} // WP_Support_Manager
 
-$wc_customer_support = WC_Customer_Support::init();
+$wp_support_manager = WP_Support_Manager::init();
 
-register_activation_hook( __FILE__, array( 'WC_Customer_Support', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'WC_Customer_Support', 'deactivate' ) );
+register_activation_hook( __FILE__, array( 'WP_Support_Manager', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'WP_Support_Manager', 'deactivate' ) );
