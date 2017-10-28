@@ -53,6 +53,13 @@ class WP_Support_Manager {
     public $version = '1.0.0';
 
     /**
+     * Holds all class instances
+     *
+     * @var array
+     */
+    private $container = array();
+
+    /**
      * Constructor for the WP_Support_Manager class
      *
      * Sets up all the appropriate hooks and actions
@@ -68,17 +75,10 @@ class WP_Support_Manager {
         // Define all constant
         $this->define_constant();
 
-        //includes file
-        $this->includes();
+        register_activation_hook( __FILE__, array( $this, 'activate' ) );
+        register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
-        // init actions and filter
-        $this->init_filters();
-        $this->init_actions();
-
-        // initialize classes
-        $this->init_classes();
-
-        do_action( 'wp_support_manager_loaded', $this );
+        add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
     }
 
     /**
@@ -98,11 +98,37 @@ class WP_Support_Manager {
     }
 
     /**
+     * Magic getter to bypass referencing plugin.
+     *
+     * @param $prop
+     *
+     * @return mixed
+     */
+    public function __get( $prop ) {
+        if ( array_key_exists( $prop, $this->container ) ) {
+            return $this->container[ $prop ];
+        }
+
+        return $this->{$prop};
+    }
+
+    /**
+     * Magic isset to bypass referencing plugin.
+     *
+     * @param $prop
+     *
+     * @return mixed
+     */
+    public function __isset( $prop ) {
+        return isset( $this->{$prop} ) || isset( $this->container[ $prop ] );
+    }
+
+    /**
      * Placeholder for activation function
      *
      * Nothing being called here yet.
      */
-    public static function activate() {
+    public function activate() {
 
     }
 
@@ -111,7 +137,7 @@ class WP_Support_Manager {
      *
      * Nothing being called here yet.
      */
-    public static function deactivate() {
+    public function deactivate() {
 
     }
 
@@ -124,7 +150,22 @@ class WP_Support_Manager {
         define( 'WP_SUPPORT_MANAGER_VERSION', $this->version );
         define( 'WP_SUPPORT_MANAGER_FILE', __FILE__ );
         define( 'WP_SUPPORT_MANAGER_PATH', dirname( WP_SUPPORT_MANAGER_FILE ) );
+        define( 'WP_SUPPORT_MANAGER_INC_PATH', WP_SUPPORT_MANAGER_PATH . '/includes' );
         define( 'WP_SUPPORT_MANAGER_ASSETS', plugins_url( '/assets', __FILE__ ) );
+    }
+
+    /**
+     * Load the plugin after WP User Frontend is loaded
+     *
+     * @return void
+     */
+    public function init_plugin() {
+
+        $this->includes();
+
+        $this->init_hooks();
+
+        do_action( 'wp_support_manager_loaded', $this );
     }
 
     /**
@@ -134,8 +175,13 @@ class WP_Support_Manager {
     *
     * @return void
     **/
-    private function includes() {
-        // Includes all files in your plugins
+    public function includes() {
+        if ( is_admin() ) {
+            require_once WP_SUPPORT_MANAGER_INC_PATH . '/admin/class-admin.php';
+        }
+
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-scripts.php';
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/functions.php';
     }
 
     /**
@@ -145,8 +191,12 @@ class WP_Support_Manager {
     *
     * @return void
     **/
-    private function init_filters() {
-        // Load all filters
+    public function init_hooks() {
+        // Localize our plugin
+        add_action( 'init', array( $this, 'localization_setup' ) );
+
+        // initialize the classes
+        add_action( 'init', array( $this, 'init_classes' ) );
     }
 
     /**
@@ -156,13 +206,9 @@ class WP_Support_Manager {
     *
     * @return void
     **/
-    private function init_actions() {
+    public function init_actions() {
         // Localize our plugin
         add_action( 'init', array( $this, 'localization_setup' ) );
-
-        // Loads frontend scripts and styles
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
     }
 
     /**
@@ -172,8 +218,10 @@ class WP_Support_Manager {
     *
     * @return void
     **/
-    private function init_classes() {
-        // Create instnace for all class
+    public function init_classes() {
+        if ( is_admin() ) {
+            $this->container['admin'] = new WPSM_Admin();
+        }
     }
 
     /**
@@ -187,43 +235,16 @@ class WP_Support_Manager {
         load_plugin_textdomain( 'wp-support-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
-    /**
-     * Enqueue admin scripts
-     *
-     * @since 1.0.0
-     *
-     * Allows plugin assets to be loaded.
-     *
-     * @return void
-     */
-    public function enqueue_scripts() {
+}
 
-        wp_enqueue_style( 'wp-support-manager-styles', WP_SUPPORT_MANAGER_ASSETS . '/css/style.css', false, date( 'Ymd' ) );
-        wp_enqueue_script( 'wp-support-manager-scripts', WP_SUPPORT_MANAGER_ASSETS . '/js/script.js', array( 'jquery' ), false, true );
+/**
+ * Initialize the plugin
+ *
+ * @return WP_Support_Manager
+ */
+function wpsm() {
+    return WP_Support_Manager::init();
+}
 
-        /**
-         * Example for setting up text strings from Javascript files for localization
-         *
-         * Uncomment line below and replace with proper localization variables.
-         */
-        // $translation_array = array( 'some_string' => __( 'Some string to translate', 'baseplugin' ), 'a_value' => '10' );
-        // wp_localize_script( 'base-plugin-scripts', 'baseplugin', $translation_array ) );
-    }
-
-    /**
-    * Load admin scripts
-    *
-    * @since 1.0.0
-    *
-    * @return void
-    **/
-    public function admin_enqueue_scripts( $hooks ) {
-        // Load your admin scripts..
-    }
-
-} // WP_Support_Manager
-
-$wp_support_manager = WP_Support_Manager::init();
-
-register_activation_hook( __FILE__, array( 'WP_Support_Manager', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'WP_Support_Manager', 'deactivate' ) );
+// Lets go..
+wpsm();
