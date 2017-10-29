@@ -1,10 +1,9 @@
-## WooCommerce Customer Support WordPress Plugin
+## WordPress Ticket based Customer Support Plugin
 
-A fully customer support system for WooCommerce between customer and admin
+A fully customer support system for WordPress
 
 ## Author
 
 [Sabbir Ahmed](http://sabbir.pro)
-[Rafsun Chowdhury](http://rafsuntaskin.com)
 
 
