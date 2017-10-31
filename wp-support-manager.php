@@ -181,6 +181,7 @@ class WP_Support_Manager {
         }
 
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-scripts.php';
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-core.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/functions.php';
     }
 
@@ -197,18 +198,6 @@ class WP_Support_Manager {
 
         // initialize the classes
         add_action( 'init', array( $this, 'init_classes' ) );
-    }
-
-    /**
-    * Init all actions
-    *
-    * @since 1.0.0
-    *
-    * @return void
-    **/
-    public function init_actions() {
-        // Localize our plugin
-        add_action( 'init', array( $this, 'localization_setup' ) );
     }
 
     /**
