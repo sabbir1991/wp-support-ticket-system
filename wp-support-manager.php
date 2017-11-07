@@ -4,7 +4,7 @@ Plugin Name: WP Support Manager
 Plugin URI: http://sabbir.pro/
 Description: A fully ticket based customer support system for WordPress
 Version: 1.0.0
-Author: Sabbir Ahmed
+Author: Sabbir Ahmed, Rafsun Chowdhury
 Author URI: http://sabbir.pro/
 License: GPL2
 */
@@ -178,9 +178,12 @@ class WP_Support_Manager {
     public function includes() {
         if ( is_admin() ) {
             require_once WP_SUPPORT_MANAGER_INC_PATH . '/admin/class-admin.php';
+        } else {
+            require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-frontend.php';
         }
 
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-scripts.php';
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-rewrites.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-core.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/functions.php';
     }
@@ -209,8 +212,11 @@ class WP_Support_Manager {
     **/
     public function init_classes() {
         if ( is_admin() ) {
-            $this->container['admin'] = new WPSM_Admin();
+            new WPSM_Admin();
+        } else {
+            new WPSM_Frontend();
         }
+
     }
 
     /**

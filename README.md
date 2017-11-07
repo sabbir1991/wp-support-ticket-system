@@ -5,5 +5,6 @@ A fully customer support system for WordPress
 ## Author
 
 [Sabbir Ahmed](http://sabbir.pro)
+[Rafsun Chowdhury](http://rafsuntaskin.com)
 
 
