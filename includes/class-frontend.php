@@ -29,7 +29,7 @@ class WPSM_Frontend {
         ob_start();
 
         if ( isset( $wp->query_vars['tickets'] ) ) {
-            echo 'lorem for all tickets';
+
             return ob_get_clean();
         }
 
@@ -39,7 +39,8 @@ class WPSM_Frontend {
         }
 
         if ( isset( $wp->query_vars['page'] ) ) {
-            echo 'lorem for dashboard';
+            // error_log( print_r( 'doasboar', true ) );
+            wpsm_get_template( 'dashboard/dashboard.php' );
             return ob_get_clean();
         }
 

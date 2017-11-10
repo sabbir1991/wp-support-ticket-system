@@ -33,8 +33,6 @@ class WPSM_Rewrites {
             'add-new-tickets',
         ) );
 
-        error_log( print_r( $this->query_vars, true ) );
-
         foreach ( $this->query_vars as $var ) {
             add_rewrite_endpoint( $var, EP_PAGES );
         }
@@ -53,7 +51,6 @@ class WPSM_Rewrites {
      * @return array
      */
     function register_query_var( $vars ) {
-
         foreach ( $this->query_vars as $var ) {
             $vars[] = $var;
         }

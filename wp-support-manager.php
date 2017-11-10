@@ -155,6 +155,28 @@ class WP_Support_Manager {
     }
 
     /**
+     * Get the template path.
+     *
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    public function template_path() {
+        return apply_filters( 'wpsm_template_path', 'wpsupport/' );
+    }
+
+    /**
+     * Get the plugin path.
+     *
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    public function plugin_path() {
+        return untrailingslashit( plugin_dir_path( WP_SUPPORT_MANAGER_FILE ) );
+    }
+
+    /**
      * Load the plugin after WP User Frontend is loaded
      *
      * @return void
@@ -186,6 +208,7 @@ class WP_Support_Manager {
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-rewrites.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-core.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/functions.php';
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/core-functions.php';
     }
 
     /**
