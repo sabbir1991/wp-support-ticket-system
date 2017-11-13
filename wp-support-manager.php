@@ -240,6 +240,7 @@ class WP_Support_Manager {
             new WPSM_Frontend();
         }
 
+        $this->container['scripts'] = new WPSM_Scripts();
     }
 
     /**

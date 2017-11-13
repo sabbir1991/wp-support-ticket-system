@@ -1,8 +1,8 @@
 {
-  "name": "woocommerce-customer-support",
+  "name": "wp-support-manager",
   "version": "1.0.0",
-  "slug": "wc-customer-support",
-  "description": "A fully customer support system for WooCommerce",
+  "slug": "wp-support-manager",
+  "description": "A fully customer support system for WordPress",
   "author": "Sabbir Ahmed",
   "license": "GPL",
   "private": true,

@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                     sourceMapRootpath: '../../'
                 },
                 files: {
-                    '<%= dirs.css %>/style.css': '<%= dirs.less %>/style.less'
+                    '<%= dirs.css %>/frontend.css': '<%= dirs.less %>/frontend/style.less'
                 }
             }
         },
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
 
         watch: {
             less: {
-                files: '<%= dirs.less %>/*.less',
+                files: '<%= dirs.less %>/**/*.less',
                 tasks: ['less:core']
             }
         },

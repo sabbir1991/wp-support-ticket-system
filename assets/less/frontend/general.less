@@ -1,0 +1,42 @@
+.wpsm-content-wrap {
+    display: flex;
+
+    ul.wpsm-side-nav {
+        float: left;
+        flex: 1;
+        margin: 0 20px 0 0 ;
+        padding: 0;
+        background: #fafafa;
+
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #eee;
+
+            &.active {
+                background: #eee;
+            }
+
+            a {
+                display: block;
+                text-decoration: none;
+                padding: 8px 15px;
+                color: #222;
+
+
+                &:hover {
+                    background: #eee;
+                }
+            }
+        }
+    }
+
+    .wpsm-content {
+        flex: 3;
+
+        .wpsm-content-article {
+            border-bottom: none;
+        }
+    }
+}

@@ -30,7 +30,7 @@ class WPSM_Rewrites {
     function register_rule() {
         $this->query_vars = apply_filters( 'wpsm_query_var_filter', array(
             'tickets',
-            'add-new-tickets',
+            'add-new-ticket',
         ) );
 
         foreach ( $this->query_vars as $var ) {

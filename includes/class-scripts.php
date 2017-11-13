@@ -33,4 +33,26 @@ class WPSM_Scripts {
     public function register_scripts() {
 
     }
+
+    /**
+     * Load admin scripts
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    public function load_admin_scripts( $value='' ) {
+        # code...
+    }
+
+    /**
+     * Load frontend scripts
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    public function load_frontend_scripts() {
+        wp_enqueue_style( 'wpsm-frontend', WP_SUPPORT_MANAGER_ASSETS . '/css/frontend.css', array(), false, false );
+    }
 }

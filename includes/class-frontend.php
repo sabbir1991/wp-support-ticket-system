@@ -29,17 +29,16 @@ class WPSM_Frontend {
         ob_start();
 
         if ( isset( $wp->query_vars['tickets'] ) ) {
-
+            wpsm_get_template( 'tickets/tickets.php' );
             return ob_get_clean();
         }
 
-        if ( isset( $wp->query_vars['add-new-tickets'] ) ) {
-            echo 'lorem for add new tickets';
+        if ( isset( $wp->query_vars['add-new-ticket'] ) ) {
+            wpsm_get_template( 'tickets/add-new-ticket.php' );
             return ob_get_clean();
         }
 
         if ( isset( $wp->query_vars['page'] ) ) {
-            // error_log( print_r( 'doasboar', true ) );
             wpsm_get_template( 'dashboard/dashboard.php' );
             return ob_get_clean();
         }

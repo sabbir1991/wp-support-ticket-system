@@ -56,26 +56,23 @@ function wpsm_get_nav_url( $slug = '' ) {
  * @return void
  */
 function wpsm_get_dashboard_nav() {
-
     return apply_filters( 'wpsm_get_dashboard_nav', array(
-        array(
+        'overview' => array(
             'title' => __( 'Overview', 'wp-support-manager' ),
             'icon' => '',
             'url' => wpsm_get_nav_url()
         ),
 
-        array(
+        'tickets' => array(
             'title' => __( 'All Tickets', 'wp-support-manager' ),
             'icon' => '',
             'url' => wpsm_get_nav_url( 'tickets' )
         ),
 
-        array(
-            'title' => __( 'Add New Tickets', 'wp-support-manager' ),
+        'add-new-ticket' => array(
+            'title' => __( 'Add New Ticket', 'wp-support-manager' ),
             'icon' => '',
-            'url' => wpsm_get_nav_url( 'add-new-tickets' )
+            'url' => wpsm_get_nav_url( 'add-new-ticket' )
         )
-
     ) );
-
 }
