@@ -1,0 +1,109 @@
+//
+// Labels
+// --------------------------------------------------
+
+//** Default label background color
+@label-default-bg:            lighten(#000, 46.7%); // #777;
+//** Primary label background color
+@label-primary-bg:            #428bca;
+//** Success label background color
+@label-success-bg:            #5cb85c;
+//** Info label background color
+@label-info-bg:               #5bc0de;
+//** Warning label background color
+@label-warning-bg:            #f0ad4e;
+//** Danger label background color
+@label-danger-bg:             #d9534f;
+
+//** Default label text color
+@label-color:                 #fff;
+//** Default text color of a linked label
+@label-link-hover-color:      #fff;
+
+.label-variant(@color) {
+  background-color: @color;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@color, 10%);
+    }
+  }
+}
+
+.wpsm-label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: @label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+  // Add hover effects, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.wpsm-label-default {
+  .label-variant(@label-default-bg);
+}
+
+.wpsm-label-primary {
+  .label-variant(@label-primary-bg);
+}
+
+.wpsm-label-success {
+  .label-variant(@label-success-bg);
+}
+
+.wpsm-label-info {
+  .label-variant(@label-info-bg);
+}
+
+.wpsm-label-warning {
+  .label-variant(@label-warning-bg);
+}
+
+.wpsm-label-danger {
+  .label-variant(@label-danger-bg);
+}
+
+.wpsm-success {
+  .label-variant(@label-success-bg);
+}
+
+.wpsm-info {
+  .label-variant(@label-info-bg);
+}
+
+.wpsm-warning {
+  .label-variant(@label-warning-bg);
+}
+
+.wpsm-danger {
+  .label-variant(@label-danger-bg);
+}

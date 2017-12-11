@@ -21,6 +21,7 @@ if ( $active ) {
     $active_menu = 'overview';
 }
 
+$active_menu = apply_filters( 'wpsm_dashboard_active_nav', $active_menu, $request, $active )
 ?>
 <ul class="wpsm-side-nav">
 

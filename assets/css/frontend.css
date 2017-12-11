@@ -1,3 +1,180 @@
+.wpsm-clearfix:before,
+.wpsm-clearfix:after {
+  display: table;
+  content: " ";
+}
+.wpsm-clearfix:after {
+  clear: both;
+}
+.wpsm-right {
+  float: right;
+}
+.wpsm-left {
+  float: left;
+}
+.wpsm-hide {
+  display: none;
+}
+.select2-container {
+  width: 100% !important;
+}
+.wpsm-inline-list-filters {
+  margin: 15px 0px;
+}
+.wpsm-inline-list-filters ul {
+  margin: 0px;
+  padding: 0px;
+}
+.wpsm-inline-list-filters ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0px;
+}
+.wpsm-inline-list-filters ul li:first-child a {
+  padding-left: 0px;
+}
+.wpsm-inline-list-filters ul li:last-child a {
+  border-right: none;
+}
+.wpsm-inline-list-filters ul li a {
+  font-size: 12px;
+  text-decoration: none;
+  padding: 0px 10px;
+  border-right: 1px solid #eee;
+}
+.wpsm-label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+a.wpsm-label:hover,
+a.wpsm-label:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.wpsm-label:empty {
+  display: none;
+}
+.btn .wpsm-label {
+  position: relative;
+  top: -1px;
+}
+.wpsm-label-default {
+  background-color: #777777;
+}
+.wpsm-label-default[href]:hover,
+.wpsm-label-default[href]:focus {
+  background-color: #5e5e5e;
+}
+.wpsm-label-primary {
+  background-color: #428bca;
+}
+.wpsm-label-primary[href]:hover,
+.wpsm-label-primary[href]:focus {
+  background-color: #3071a9;
+}
+.wpsm-label-success {
+  background-color: #5cb85c;
+}
+.wpsm-label-success[href]:hover,
+.wpsm-label-success[href]:focus {
+  background-color: #449d44;
+}
+.wpsm-label-info {
+  background-color: #5bc0de;
+}
+.wpsm-label-info[href]:hover,
+.wpsm-label-info[href]:focus {
+  background-color: #31b0d5;
+}
+.wpsm-label-warning {
+  background-color: #f0ad4e;
+}
+.wpsm-label-warning[href]:hover,
+.wpsm-label-warning[href]:focus {
+  background-color: #ec971f;
+}
+.wpsm-label-danger {
+  background-color: #d9534f;
+}
+.wpsm-label-danger[href]:hover,
+.wpsm-label-danger[href]:focus {
+  background-color: #c9302c;
+}
+.wpsm-success {
+  background-color: #5cb85c;
+}
+.wpsm-success[href]:hover,
+.wpsm-success[href]:focus {
+  background-color: #449d44;
+}
+.wpsm-info {
+  background-color: #5bc0de;
+}
+.wpsm-info[href]:hover,
+.wpsm-info[href]:focus {
+  background-color: #31b0d5;
+}
+.wpsm-warning {
+  background-color: #f0ad4e;
+}
+.wpsm-warning[href]:hover,
+.wpsm-warning[href]:focus {
+  background-color: #ec971f;
+}
+.wpsm-danger {
+  background-color: #d9534f;
+}
+.wpsm-danger[href]:hover,
+.wpsm-danger[href]:focus {
+  background-color: #c9302c;
+}
+.wpsm-form-container label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+.wpsm-form-control {
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #e3e3e3;
+  padding: 4px 6px;
+  border-radius: 0;
+  color: #555555;
+  display: block;
+  font-size: 14px;
+  min-height: 26px;
+  line-height: 26px;
+  vertical-align: middle;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.wpsm-form-control p {
+  margin-bottom: 0;
+}
+textarea.wpsm-form-control {
+  height: auto;
+}
+select.wpsm-form-control {
+  height: 35px;
+}
+.wpsm-radio-inline + .wpsm-radio-inline,
+.wpsm-checkbox-inline + .wpsm-checkbox-inline {
+  margin-left: 10px;
+  margin-top: 0;
+}
+.wpsm-form-group {
+  margin-bottom: 15px;
+}
 .wpsm-content-wrap {
   display: flex;
 }
@@ -31,4 +208,52 @@
 }
 .wpsm-content-wrap .wpsm-content .wpsm-content-article {
   border-bottom: none;
+}
+.wpsm-ticket-list-wrap .heading {
+  border-bottom: 1px solid #eee;
+  padding: 0px 0px 10px;
+}
+.wpsm-ticket-list-wrap .heading h2 {
+  margin: 0px;
+  padding: 0px;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td {
+  vertical-align: middle;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview {
+  position: relative;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview span.preview-fade {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+  position: absolute;
+  width: 23px;
+  bottom: 0px;
+  right: 10px;
+  z-index: 999999;
+  height: 100%;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview span.preview-fade:after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  bottom: 0;
+  height: 100%;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview a {
+  text-decoration: none;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview a p {
+  margin: 0px;
+  padding: 0px;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview a p.title {
+  font-weight: bold;
+  color: #2a3b47;
+}
+.wpsm-ticket-list-wrap .wpsm-ticket-table table tbody tr td.title_preview a p.preview {
+  margin: 0px;
+  padding: 0px;
+  height: 24px;
+  overflow: hidden;
+  color: #93a1af;
 }

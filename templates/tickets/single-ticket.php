@@ -38,7 +38,7 @@
 
         <article class="wpsm-content-article">
 
-            <?php wpsm_get_template( 'tickets/new-ticket-form.php' ); ?>
+
 
         </article><!-- .dashboard-content-area -->
 

@@ -129,7 +129,10 @@ class WP_Support_Manager {
      * Nothing being called here yet.
      */
     public function activate() {
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-install.php';
 
+        $installer = new WPSM_Install();
+        $installer->do_install();
     }
 
     /**
@@ -204,9 +207,11 @@ class WP_Support_Manager {
             require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-frontend.php';
         }
 
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-form-handler.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-scripts.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-rewrites.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-core.php';
+        require_once WP_SUPPORT_MANAGER_INC_PATH . '/class-ticket.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/functions.php';
         require_once WP_SUPPORT_MANAGER_INC_PATH . '/core-functions.php';
     }
@@ -241,6 +246,7 @@ class WP_Support_Manager {
         }
 
         $this->container['scripts'] = new WPSM_Scripts();
+        $this->container['ticket'] = new WPSM_Ticket();
     }
 
     /**

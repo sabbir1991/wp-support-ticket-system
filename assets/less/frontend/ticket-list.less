@@ -1,0 +1,68 @@
+.wpsm-ticket-list-wrap {
+
+    .heading {
+        border-bottom: 1px solid #eee;
+        padding: 0px 0px 10px;
+
+        h2 {
+            margin: 0px;
+            padding: 0px;
+        }
+    }
+
+    .wpsm-ticket-table {
+        table {
+            tbody {
+                tr {
+                    td {
+                        vertical-align: middle;
+
+                        &.title_preview {
+                            position: relative;
+
+                            span.preview-fade {
+                                background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+                                position: absolute;
+                                width: 23px;
+                                bottom: 0px;
+                                right: 10px;
+                                z-index: 999999;
+                                height: 100%;
+
+                                &:after {
+                                    content: "";
+                                    position: absolute;
+                                    width: 18px;
+                                    bottom: 0;
+                                    height: 100%;
+                                }
+                            }
+
+                            a {
+                                text-decoration: none;
+
+                                p {
+                                    margin: 0px;
+                                    padding: 0px;
+
+                                    &.title {
+                                        font-weight: bold;
+                                        color: #2a3b47;
+                                    }
+
+                                    &.preview {
+                                        margin: 0px;
+                                        padding: 0px;
+                                        height: 24px;
+                                        overflow: hidden;
+                                        color: #93a1af;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

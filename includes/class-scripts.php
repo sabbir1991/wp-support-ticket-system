@@ -54,5 +54,10 @@ class WPSM_Scripts {
      */
     public function load_frontend_scripts() {
         wp_enqueue_style( 'wpsm-frontend', WP_SUPPORT_MANAGER_ASSETS . '/css/frontend.css', array(), false, false );
+        wp_enqueue_style( 'wpsm-select2', WP_SUPPORT_MANAGER_ASSETS . '/vendors/select2/select2.css', array(), false, false );
+
+        wp_enqueue_script( 'jquery' );
+        wp_enqueue_script( 'wpsm-select2', WP_SUPPORT_MANAGER_ASSETS . '/vendors/select2/select2.full.min.js', array( 'jquery' ), false, false );
+        wp_enqueue_script( 'wpsm-scripts', WP_SUPPORT_MANAGER_ASSETS . '/js/script.js', array( 'jquery', 'wpsm-select2' ), false, false );
     }
 }

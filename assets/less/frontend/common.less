@@ -1,0 +1,60 @@
+.wpsm-clearfix {
+    &:before, &:after {
+        display: table;
+        content: " ";
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.wpsm-right {
+    float:right;
+}
+
+.wpsm-left {
+    float:left;
+}
+
+.wpsm-hide {
+    display: none;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.wpsm-inline-list-filters {
+    margin: 15px 0px;
+
+    ul {
+        margin: 0px;
+        padding: 0px;
+
+        li {
+            display: inline-block;
+            list-style-type: none;
+            margin: 0px;
+
+            &:first-child {
+                a {
+                    padding-left: 0px;
+                }
+            }
+
+            &:last-child {
+                a {
+                    border-right: none;
+                }
+            }
+
+            a {
+                font-size: 12px;
+                text-decoration: none;
+                padding: 0px 10px;
+                border-right: 1px solid #eee;
+            }
+        }
+    }
+}
