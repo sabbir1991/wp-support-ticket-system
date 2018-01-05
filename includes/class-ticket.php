@@ -227,11 +227,12 @@ class WPSM_Ticket {
      *
      * @since 1.0.0
      *
+     * @param array $files
+     *
      * @return void
      */
     public function set_attachments( $files ) {
         error_log( print_r( $files, true ) );
     }
-
 
 }

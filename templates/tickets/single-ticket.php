@@ -38,8 +38,6 @@
 
         <article class="wpsm-content-article">
 
-
-
         </article><!-- .dashboard-content-area -->
 
          <?php

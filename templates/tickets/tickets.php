@@ -62,9 +62,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th><?php _e( 'Status', 'dokan-lite' ); ?></th>
-                                <th><?php _e( 'Title', 'dokan-lite' ); ?></th>
-                                <th><?php _e( 'Date', 'dokan-lite' ); ?></th>
+                                <th><?php _e( 'Status', 'wp-support-manager' ); ?></th>
+                                <th><?php _e( 'Number', 'wp-support-manager' ); ?></th>
+                                <th><?php _e( 'Title', 'wp-support-manager' ); ?></th>
+                                <th><?php _e( 'Date', 'wp-support-manager' ); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,6 +75,7 @@
                                 <td class="status" style="width: 10%;">
                                     <span class="wpsm-label wpsm-label-<?php echo wpsm_ticket_status_lable( $ticket->post_status ) ?>"><?php echo wpsm_ticket_status( $ticket->post_status ); ?></span>
                                 </td>
+                                <td><?php echo sprintf('<a class="ticket-number" href="%s">#%d</a>', esc_url( add_query_arg( array( 'ticket_id' => $ticket->ID ), wpsm_get_nav_url( 'single-ticket' ) ) ), $ticket->ID ); ?></td>
                                 <td class="title_preview" style="width: 70%;">
                                     <span class="preview-fade"></span>
                                     <a href="<?php echo add_query_arg( array( 'ticket_id' => $ticket->ID ), wpsm_get_nav_url( 'single-ticket' ) ); ?>">
